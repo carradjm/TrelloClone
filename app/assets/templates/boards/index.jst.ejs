@@ -1,0 +1,11 @@
+<h2>My Boards</h2>
+
+<% boards.forEach( function(board){ %>
+
+  <a href="#">
+    <h3 class="show-board" data-id="<%= board.id %>">
+      <%= board.escape('title') %>
+    </h3>
+  </a>
+
+<% }); %>
