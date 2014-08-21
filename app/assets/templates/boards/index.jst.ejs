@@ -1,11 +1,14 @@
 <h2>My Boards</h2>
 
+<button class="add-board">Add New Board</button>
+<input id="new-board" type="text">
 <% boards.forEach( function(board){ %>
 
-  <a href="#">
+  <a href="#/boards/<%= board.id %>">
     <h3 class="show-board" data-id="<%= board.id %>">
       <%= board.escape('title') %>
     </h3>
   </a>
 
 <% }); %>
+

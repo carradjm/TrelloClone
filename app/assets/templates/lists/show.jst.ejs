@@ -1,3 +1,11 @@
-<h3><%= list.escape("title") %></h3>
+<li>
+  <ul class="list-cards" data-id="<%= list.id %>">
+  <h3><%= list.escape("title") %></h3>
 
-<div class="list-cards"></div>
+  <input type="text"
+         name="card[title]"
+         id="card-title">
+  <button id="add-card">Add Card to List</button>
+  </ul>
+</li>
+

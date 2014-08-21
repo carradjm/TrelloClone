@@ -1,1 +1,10 @@
-<h3><%= card.escape("title") %></h3>
+<div data-id="<%= card.id %>" class="card-data">
+  <h4><%= card.escape("title") %></h4>
+    <ul>
+      <li class="dblclickable card-description" data-id"<%= card.id %>"><strong>Description:</strong><%= card.escape('description') %></li>
+      <small class="edit-element">Double click to edit</small><br><br>
+      <li><strong>Last Edited: </strong><%= card.escape('updated_at') %></li>
+    </ul>
+</div>
+
+

@@ -1,5 +1,16 @@
 TrelloClone.Views.ListShowView = Backbone.View.extend({
 
+  initialize: function(){
+    this.listenTo(this.model.cards(), 'sync remove', this.render);
+    $(".list-cards").sortable();
+  },
+
+  events: {
+    "click #add-card": "add"
+  },
+
+  className: "group",
+
   template: JST["lists/show"],
 
   render: function(){
@@ -7,12 +18,22 @@ TrelloClone.Views.ListShowView = Backbone.View.extend({
     this.$el.html(content);
 
     var that = this
-    this.model.cards().each(function(card){
-      var cardView = new TrelloClone.Views.CardShowView({ model: card });
-      that.$el.$('.list-cards').append(cardView.render().$el);
-    });
+    if (this.model.cards()){
+      this.model.cards().each(function(card){
+        var cardView = new TrelloClone.Views.CardShowView({ model: card });
+        that.$el.find('.list-cards').append(cardView.render().$el);
+      })
+    };
+    this.$(".list-cards").sortable();
 
     return this;
+  },
+
+  add: function(event){
+    var newTitle = $('#card-title').val()
+    this.model.cards().create({ title: newTitle, list_id: this.model.id }, {
+      wait: true
+    });
   }
 
 });

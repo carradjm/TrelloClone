@@ -3,7 +3,6 @@ TrelloClone.Models.Board = Backbone.Model.extend({
   urlRoot: "api/boards",
 
   parse: function(resp){
-    console.log(resp)
     if (resp["lists"]) {
       this.lists().set(resp["lists"], {parse: true});
       delete resp["lists"];
